@@ -14,15 +14,23 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
-	public Usuario save (Usuario usuario){
-	usuario.setDataRegistro(LocalDateTime.now());
+
+	public Usuario cadastrarUsuario(Usuario usuario) {
+		usuario.setDataRegistro(LocalDateTime.now());
 		return usuarioRepository.save(usuario);
 	}
-	
-	public List<Usuario> findAll(){
+
+	public List<Usuario> findAll() {
 		return usuarioRepository.findAll();
-				
+
 	}
-		
+
+	public Usuario exibirUsuarioPeloId(Integer id) {
+		return usuarioRepository.findById(id).get();
+	}
+
+	public void excluirUsuarioPeloId(Usuario usuario) {
+		usuarioRepository.delete(usuario);
+
+	}
 }
