@@ -23,12 +23,6 @@ public class UsuarioDTO {
 		this.email = email;
 	}
 
-	public UsuarioDTO(Usuario usuario) {
-		this.id = usuario.getId();
-		this.usuario = usuario.getUsuario();
-		this.email = usuario.getEmail();
-	}
-
 	public static UsuarioDTO retornoUsuario(Usuario usuario) {
 		UsuarioDTO usuarioDTO = new UsuarioDTO(usuario.getId(), usuario.getUsuario(), usuario.getEmail());
 		return usuarioDTO;
