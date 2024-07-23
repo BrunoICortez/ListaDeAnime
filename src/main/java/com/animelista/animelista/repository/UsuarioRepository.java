@@ -10,4 +10,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
 
 	Optional<Usuario> findById(Integer id);
 
+	boolean existsById(Integer id);
+
+		
+
 }

@@ -16,9 +16,11 @@ public class Usuario {
 
 	private String usuario;
 
+	
 	private String senha;
 
 	private String email;
+	
 
 	private LocalDateTime dataRegistro;
 

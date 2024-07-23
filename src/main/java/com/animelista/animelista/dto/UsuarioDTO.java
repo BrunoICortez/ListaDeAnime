@@ -2,10 +2,15 @@ package com.animelista.animelista.dto;
 
 import com.animelista.animelista.models.Usuario;
 
+import jakarta.persistence.Id;
+
 public class UsuarioDTO {
 
+	@Id
 	private Integer id;
+
 	private String usuario;
+
 	private String email;
 
 	public UsuarioDTO() {
