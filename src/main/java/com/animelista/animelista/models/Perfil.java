@@ -3,10 +3,15 @@ package com.animelista.animelista.models;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Perfil {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer idPerfil;
 	private String apelido;
 	private String genero;
 	private Integer idade;
