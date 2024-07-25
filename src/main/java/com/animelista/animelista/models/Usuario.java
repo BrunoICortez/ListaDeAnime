@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Usuario {
@@ -17,6 +18,9 @@ public class Usuario {
 	private String senha;
 	private String email;
 	private LocalDateTime dataRegistro;
+
+	@OneToOne
+	private Perfil perfil;
 
 	public Usuario() {
 
@@ -68,6 +72,14 @@ public class Usuario {
 
 	public void setDataRegistro(LocalDateTime dataRegistro) {
 		this.dataRegistro = dataRegistro;
+	}
+
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
 }

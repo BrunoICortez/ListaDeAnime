@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.animelista.animelista.dto.TrocaDeSenhaDTO;
 import com.animelista.animelista.dto.UsuarioDTO;
+import com.animelista.animelista.models.Perfil;
 import com.animelista.animelista.models.Usuario;
 import com.animelista.animelista.repository.UsuarioRepository;
 
@@ -19,6 +20,9 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+
+	@Autowired
+	private PerfilService perfilService;
 
 	public Usuario cadastrarUsuario(Usuario usuario) {
 		usuario.setDataRegistro(LocalDateTime.now());
@@ -61,11 +65,20 @@ public class UsuarioService {
 
 	}
 
+	public Usuario associarPerfil(Integer usuarioId, Perfil perfil) {
+		Usuario usuario = exibirUsuarioPeloId(usuarioId);
+		perfil.setUsuario(usuario);
+		perfilService.cadastrarPerfil(perfil);
+		usuario.setPerfil(perfil);
+		return usuarioRepository.save(usuario);
+	}
+
 	private UsuarioDTO converterParaDTO(Usuario usuario) {
 		UsuarioDTO usuarioDTO = new UsuarioDTO();
 		usuarioDTO.setId(usuario.getId());
 		usuarioDTO.setUsuario(usuario.getUsuario());
 		usuarioDTO.setEmail(usuario.getEmail());
+		usuarioDTO.setPerfil(usuario.getPerfil());
 		return usuarioDTO;
 	}
 
@@ -77,7 +90,6 @@ public class UsuarioService {
 
 			if (senhaUsuario.equals(trocaDeSenhaDTO.getSenhaAntiga())) {
 				usuario.setSenha(trocaDeSenhaDTO.getSenhaAtual());
-
 				usuarioRepository.save(usuario);
 
 			} else {

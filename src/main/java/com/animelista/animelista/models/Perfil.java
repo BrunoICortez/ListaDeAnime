@@ -6,29 +6,45 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Perfil {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idPerfil;
+
 	private String apelido;
 	private String genero;
 	private Integer idade;
 	private LocalDate dataNascimento;
 	private String localizacao;
 
+	@OneToOne
+	private Usuario usuario;
+
 	public Perfil() {
-		
+
 	}
 
-	public Perfil(String apelido, String genero, Integer idade, LocalDate dataNascimento, String localizacao) {
+	public Perfil(Integer idPerfil, String apelido, String genero, Integer idade, LocalDate dataNascimento,
+			String localizacao, Usuario usuario) {
 
+		this.idPerfil = idPerfil;
 		this.apelido = apelido;
 		this.genero = genero;
 		this.idade = idade;
 		this.dataNascimento = dataNascimento;
 		this.localizacao = localizacao;
+		this.usuario = usuario;
+	}
+
+	public Integer getIdPerfil() {
+		return idPerfil;
+	}
+
+	public void setIdPerfil(Integer idPerfil) {
+		this.idPerfil = idPerfil;
 	}
 
 	public String getApelido() {
@@ -69,6 +85,14 @@ public class Perfil {
 
 	public void setLocalizacao(String localizacao) {
 		this.localizacao = localizacao;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

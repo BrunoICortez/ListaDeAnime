@@ -1,5 +1,6 @@
 package com.animelista.animelista.dto;
 
+import com.animelista.animelista.models.Perfil;
 import com.animelista.animelista.models.Usuario;
 
 import jakarta.persistence.Id;
@@ -12,6 +13,8 @@ public class UsuarioDTO {
 	private String usuario;
 
 	private String email;
+
+	private Perfil perfil;
 
 	public UsuarioDTO() {
 
@@ -55,6 +58,14 @@ public class UsuarioDTO {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
 }
