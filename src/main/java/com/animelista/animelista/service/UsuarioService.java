@@ -66,6 +66,7 @@ public class UsuarioService {
 	}
 
 	public Usuario associarPerfil(Integer id, Perfil perfil) {
+
 		Usuario usuario = exibirUsuarioPeloId(id);
 		perfil.setUsuario(usuario);
 		perfilService.cadastrarPerfil(id, perfil);

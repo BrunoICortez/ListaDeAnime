@@ -37,8 +37,9 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/{id}")
-	public UsuarioDTO exibirUsuarioPeloId(@PathVariable Integer id) {
-		Usuario usuario = this.usuarioService.exibirUsuarioPeloId(id);
+	public UsuarioDTO exibirUsuarioPeloId(@PathVariable Integer id ) {
+		
+		Usuario usuario = this.usuarioService.exibirUsuarioPeloId(id );
 		return UsuarioDTO.retornoUsuario(usuario);
 	}
 

@@ -23,7 +23,7 @@ public class Usuario {
 	private LocalDateTime dataRegistro;
 	
 	@JsonIgnore
-	@OneToOne(mappedBy = "usuario",cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Perfil perfil;
 
 	public Usuario() {

@@ -3,7 +3,6 @@ package com.animelista.animelista.models;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,7 +20,7 @@ public class Perfil {
 	private LocalDate dataNascimento;
 	private String localizacao;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Usuario usuario;
 
 	public Perfil() {
