@@ -29,9 +29,9 @@ public class PerfilController {
 		return this.perfilService.findAll();
 	}
 
-	@PostMapping
-	public Perfil cadastrarPerfil(@RequestBody Perfil perfil) {
-		return this.perfilService.cadastrarPerfil(perfil);
+	@PostMapping("/usuario/{id}")
+	public Perfil cadastrarPerfil(@PathVariable Integer id,@RequestBody Perfil perfil) {		
+		return this.perfilService.cadastrarPerfil(id,perfil);
 	}
 
 	@GetMapping("/{idPerfil}")

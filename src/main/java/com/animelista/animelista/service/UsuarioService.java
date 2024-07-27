@@ -65,10 +65,10 @@ public class UsuarioService {
 
 	}
 
-	public Usuario associarPerfil(Integer usuarioId, Perfil perfil) {
-		Usuario usuario = exibirUsuarioPeloId(usuarioId);
+	public Usuario associarPerfil(Integer id, Perfil perfil) {
+		Usuario usuario = exibirUsuarioPeloId(id);
 		perfil.setUsuario(usuario);
-		perfilService.cadastrarPerfil(perfil);
+		perfilService.cadastrarPerfil(id, perfil);
 		usuario.setPerfil(perfil);
 		return usuarioRepository.save(usuario);
 	}

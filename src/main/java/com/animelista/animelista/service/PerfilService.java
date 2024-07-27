@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.animelista.animelista.models.Perfil;
+import com.animelista.animelista.models.Usuario;
 import com.animelista.animelista.repository.PerfilRepository;
+import com.animelista.animelista.repository.UsuarioRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
@@ -16,8 +18,16 @@ public class PerfilService {
 
 	@Autowired
 	private PerfilRepository perfilRepository;
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
-	public Perfil cadastrarPerfil(Perfil perfil) {
+	public Perfil cadastrarPerfil(Integer id ,@Valid Perfil perfil) {
+		Usuario usuario = usuarioRepository.findById(id)
+		.orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com o ID: " + id));
+		
+		perfil.setUsuario(usuario);
+        usuario.setPerfil(perfil);
+		
 		return perfilRepository.save(perfil);
 
 	}

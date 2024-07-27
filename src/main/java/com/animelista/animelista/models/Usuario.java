@@ -2,6 +2,9 @@ package com.animelista.animelista.models;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,8 +21,9 @@ public class Usuario {
 	private String senha;
 	private String email;
 	private LocalDateTime dataRegistro;
-
-	@OneToOne
+	
+	@JsonIgnore
+	@OneToOne(mappedBy = "usuario",cascade = CascadeType.ALL)
 	private Perfil perfil;
 
 	public Usuario() {
